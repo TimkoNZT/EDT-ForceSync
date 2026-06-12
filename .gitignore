@@ -1,0 +1,15 @@
+# Build output
+target/
+dist/*.zip
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Internal docs
+AGENTS.md
+
+# OS
+Thumbs.db
+.DS_Store

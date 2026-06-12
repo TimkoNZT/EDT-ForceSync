@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.commands">
+      <command
+            id="com.nzt.edt.forcesync.forceSynchronize"
+            name="%forceSyncCommandName">
+      </command>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            class="com.nzt.edt.forcesync.ForceSynchronizationHandler"
+            commandId="com.nzt.edt.forcesync.forceSynchronize">
+         <activeWhen>
+            <with variable="selection">
+               <iterate ifEmpty="false">
+                  <instanceof value="com.e1c.g5.dt.applications.infobases.IInfobaseApplication"/>
+               </iterate>
+            </with>
+         </activeWhen>
+      </handler>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:com.e1c.g5.dt.applications.ui.view?after=additions">
+         <command
+               commandId="com.nzt.edt.forcesync.forceSynchronize"
+               style="push">
+            <visibleWhen checkEnabled="false">
+               <with variable="activeMenuSelection">
+                  <iterate ifEmpty="false">
+                     <instanceof value="com.e1c.g5.dt.applications.infobases.IInfobaseApplication"/>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>
