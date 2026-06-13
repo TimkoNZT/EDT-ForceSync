@@ -105,6 +105,8 @@ public class ForceSynchronizationHandler extends AbstractHandler {
         ServiceReference<T> ref = ctx.getServiceReference(type);
         if (ref == null)
             return null;
-        return ctx.getService(ref);
+        T service = ctx.getService(ref);
+        ctx.ungetService(ref);
+        return service;
     }
 }
